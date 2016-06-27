@@ -7,7 +7,7 @@ class RethinkDB {
     this.r = RethinkDBDash({
       db: "screeps",
       servers: {
-        host: "rethinkdb", port: 28015
+        [host: "rethinkdb", port: 28015]
       },
       silent: true
     });
@@ -18,12 +18,16 @@ class RethinkDB {
     initDB(this.r);
   }
 
-  createSnippet(user, content, global) {
+  newSnippet(user, id, snippet) {
     return this.r.table("snippets").insert({
-      global: global,
+      id: idea,
       user: user,
-      content: content
+      content: snippet
     }).run();
+  }
+
+  findSnippet(user, id) {
+    return this.r.table("snippets").get(id).run();
   }
 }
 
