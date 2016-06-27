@@ -20,7 +20,7 @@ class RethinkDB {
 
   newSnippet(user, id, snippet) {
     return this.r.table("snippets").insert({
-      id: idea,
+      id: id,
       user: user,
       content: snippet
     }).run();
