@@ -14,11 +14,11 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded());
 
 function writeResponse(text, userOnly, res, attachments) {
-  res.write(JSON.stringify({
+  res.json({
     response_type: userOnly ? "ephermeral" : "in_channel",
     text: text,
     attachments: attachments
-  }));
+  });
   res.end();
 }
 
