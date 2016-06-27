@@ -48,9 +48,7 @@ function processCommand(body, res) {
     } else if (params[0] == "view" && params.length == 2) {
       db.findSnippet(body.user_id, params[1]).then(function(snippet) {
         if (snippet) {
-          writeResponse("Snippet found.", false, res, [
-            { text: snippet.content }
-          ]);
+          writeResponse("Snippet found.\n" + snippet.content, false, res);
         } else {
           writeResponse("Snippet not found.", true, res);
         }
