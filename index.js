@@ -32,7 +32,9 @@ function sendUsage(res) {
 
 function processCommand(body, res) {
   function sendError(err) {
-    writeResponse("Unable to process request.", true, res);
+    writeResponse("Unable to process request.", true, res, [
+      { text: JSON.stringify(err) }
+    ]);
   }
 
   if (body.command == "/snippet") {
