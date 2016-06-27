@@ -46,7 +46,7 @@ function processCommand(body, res) {
         writeResponse("Snippet created with ID " + snippetName, false, res);
       }).catch(sendError);
     } else if (params[0] == "view" && params.length == 2) {
-      db.findSnippet(body.user_id, params[1]).then(function(text) {
+      db.findSnippet(body.user_id, params[1]).then(function(snippet) {
         if (snippet) {
           writeResponse("Snippet found.", false, res, [
             { text: text.content }
