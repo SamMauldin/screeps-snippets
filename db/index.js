@@ -6,9 +6,9 @@ class RethinkDB {
   constructor() {
     this.r = RethinkDBDash({
       db: "screeps",
-      servers: {
-        [host: "rethinkdb", port: 28015]
-      },
+      servers: [
+        {host: "rethinkdb", port: 28015}
+      ],
       silent: true
     });
     this.init();
