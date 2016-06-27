@@ -23,7 +23,13 @@ function writeResponse(text, userOnly, res, attachments) {
 }
 
 var usage = [
-  "TODO"
+  "```",
+  "Usage:",
+  "/snippet create [snippet name] [snippet content]",
+  "e.g. /snippet create helloWorld `hello, world!`",
+  "/snippet view [snippet name]",
+  "e.g. /snippet view helloWorld",
+  "```"
 ];
 
 function sendUsage(res) {
