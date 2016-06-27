@@ -49,7 +49,7 @@ function processCommand(body, res) {
       db.findSnippet(body.user_id, params[1]).then(function(snippet) {
         if (snippet) {
           writeResponse("Snippet found.", false, res, [
-            { text: text.content }
+            { text: snippet.content }
           ]);
         } else {
           writeResponse("Snippet not found.", true, res);
