@@ -64,7 +64,7 @@ function processCommand(body, res) {
 
 app.post("/slack-endpoint", function(req, res) {
   if (req.body.token === slackToken) {
-    processCommand(req.body);
+    processCommand(req.body, res);
   } else {
     res.write("Denied")
     res.end();
