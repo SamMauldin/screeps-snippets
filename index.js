@@ -31,18 +31,18 @@ function sendUsage(res) {
 }
 
 function processCommand(body, res) {
-  function sendError() {
+  function sendError(err) {
     writeResponse("Unable to process request.", true, res);
   }
 
   if (body.command == "/snippet") {
     var params = body.text.split(" ");
     if (params[0] == "create" && params.length > 2) {
-      params.pop();
-      var snippetName = params.pop();
+      params.shift();
+      var snippetName = params.shift();
 
       db.newSnippet(body.user_id, snippetName, params.join(" ")).then(function() {
-        writeResponse("Snippet created!", false, res);
+        writeResponse("Snippet created with ID " + snippetName, false, res);
       }).catch(sendError);
     } else if (params[0] == "view" && params.length == 2) {
       db.findSnippet(body.user_id, params[1]).then(function(text) {
