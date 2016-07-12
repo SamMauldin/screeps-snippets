@@ -77,8 +77,8 @@ app.post("/", function(req, res) {
 });
 
 app.all("*", function(req, res) {
-  req.write("This can only be accessed via slack.");
-  req.end();
+  res.write("This can only be accessed via slack.");
+  res.end();
 });
 
 app.listen(8080);
