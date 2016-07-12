@@ -67,17 +67,17 @@ function processCommand(body, res) {
   }
 }
 
-app.post("/slack-endpoint", function(req, res) {
+app.post("/", function(req, res) {
   if (req.body.token === slackToken) {
     processCommand(req.body, res);
   } else {
-    res.write("Denied")
+    res.write("Nope.avi")
     res.end();
   }
 });
 
-app.all(function(req, res) {
-  req.write("Internal service.");
+app.all("*", function(req, res) {
+  req.write("This can only be accessed via slack.");
   req.end();
 });
 
